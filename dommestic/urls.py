@@ -18,7 +18,11 @@ from django.urls import include, path
 from django.shortcuts import redirect
 
 urlpatterns = [
-    path('/', redirect('/home/')),
+    path('', include('home.urls')),
     path('home/', include('home.urls')),
     path('admin/', admin.site.urls),
 ]
+
+def redirect_root(request):
+    response = redirect('/home/')
+    return response
